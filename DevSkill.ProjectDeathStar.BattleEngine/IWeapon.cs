@@ -4,7 +4,15 @@ using System.Text;
 
 namespace DevSkill.ProjectDeathStar.BattleEngine
 {
-    interface IWeapon
+    public interface IWeapon
     {
+        uint ElectromagneticDamage { get; }
+        uint ExplosiveDamage { get; }
+        uint KineticDamage { get; }
+        string Name { get; }
+        string PictureUrl { get; }
+        uint ThermalDamage { get; }
+        WeaponType Type { get; }
+
     }
 }
