@@ -19,7 +19,14 @@ namespace DevSkill.ProjectDeathStar.BattleEngine
         public uint CalculateTotalDamage()
         {
             uint totalDamage = 0;
-            return 0;
+            for (int i = 0; i < WeaponSlots.Length; i++)
+            {
+                if (WeaponSlots[i] != null)
+                {
+                    totalDamage += (WeaponSlots[i].KineticDamage + WeaponSlots[i].ElectromagneticDamage + WeaponSlots[i].ExplosiveDamage + WeaponSlots[i].ThermalDamage);
+                }
+            }
+            return totalDamage;
         }
     }
 }
