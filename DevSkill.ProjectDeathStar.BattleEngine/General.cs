@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevSkill.ProjectDeathStar.BattleEngine
 {
-    class General
+    public class General
     {
     }
 }
