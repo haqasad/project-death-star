@@ -4,7 +4,11 @@ using System.Text;
 
 namespace DevSkill.ProjectDeathStar.BattleEngine
 {
-    class DefenseModule
+    public class DefenseModule
     {
+        string Name { get; set; }
+        int ShieldEffectFactor { get; set; }
+        int ArmorEffectFactor { get; set; }
+        int HullEffectFactor { get; set; }
     }
 }
