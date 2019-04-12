@@ -4,7 +4,13 @@ using System.Text;
 
 namespace DevSkill.ProjectDeathStar.BattleEngine
 {
-    class WeaponType
+    public enum WeaponType
     {
+        Small,
+        Medium,
+        Large,
+        XLarge,
+        XXLarge,
+        Doomsday
     }
 }
