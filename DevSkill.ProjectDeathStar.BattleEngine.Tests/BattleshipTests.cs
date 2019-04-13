@@ -49,6 +49,33 @@ namespace Tests
             }
         }
 
+        [Test]
+        public void CalculateTotalDamage_SetTwoWeaponsInDifferentSlots_GivesSummationOfWeaponsDamagePower()
+        {
+            using(var mock = AutoMock.GetLoose())
+            {
+                // Arrange
+                var raven = Battleship.CreateBattleship("Raven");
+                mock.Mock<IWeapon>().Setup(x => x.KineticDamage).Returns(500);
+                mock.Mock<IWeapon>().Setup(x => x.ThermalDamage).Returns(500);
+                mock.Mock<IWeapon>().Setup(x => x.ElectromagneticDamage).Returns(500);
+                mock.Mock<IWeapon>().Setup(x => x.ExplosiveDamage).Returns(500);
+                mock.Mock<IWeapon>().Setup(x => x.Type).Returns(WeaponType.Large);
+
+                var cannon = mock.Create<IWeapon>();
+                var cannon2 = mock.Create<IWeapon>();
+
+                raven.InstallWeapon(cannon, 3);
+                raven.InstallWeapon(cannon2, 4);
+
+                // Act
+                uint result = raven.CalculateTotalDamage();
+
+                // Assert
+                Assert.AreEqual(4000, result);
+            }
+        }
+
         //[Test]
         //public void Test1()
         //{
