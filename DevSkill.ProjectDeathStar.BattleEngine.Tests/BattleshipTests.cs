@@ -1,6 +1,7 @@
 using Autofac.Extras.Moq;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
+using DevSkill.ProjectDeathStar.BattleEngine;
 
 namespace Tests
 {
@@ -18,6 +19,7 @@ namespace Tests
             using(var mock = AutoMock.GetLoose())
             {
                 // Arrange
+                var raven = Battleship.
             }
         }
 

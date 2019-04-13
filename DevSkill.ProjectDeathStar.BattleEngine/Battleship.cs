@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DevSkill.ProjectDeathStar.BattleEngine
 {
-    class Battleship : Ship
+    public class Battleship : Ship
     {
         private Battleship(string name, string pictureUrl, uint sheild, uint armor, 
             uint hull, uint range, uint weaponSlot, uint engineeringSlot, uint defenseSlot)
