@@ -97,6 +97,26 @@ namespace Tests
             }
         }
 
+        [Test]
+        public void InstallWeapon_SetWrongWeaponType_ThrowsException()
+        {
+            using(var mock = AutoMock.GetLoose())
+            {
+                // Arrange
+                var raven = Battleship.CreateBattleship("Raven");
+                var cannon = Weapon.CreateWeapon("Cannon", WeaponType.Small);
+
+                // Act
+
+                // Assert
+                Assert.Multiple(() =>
+                {
+                    var ex = Assert.Throws<Exception>(() => raven.InstallWeapon(cannon, 7), "Expected exception is missing");
+                    Assert.AreEqual("Invalid Slot", ex.Message, "Wrong error message");
+                });
+            }
+        }
+
         //[Test]
         //public void Test1()
         //{
