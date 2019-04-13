@@ -19,7 +19,14 @@ namespace Tests
             using(var mock = AutoMock.GetLoose())
             {
                 // Arrange
-                var raven = Battleship.
+                var raven = Battleship.CreateBattleship("Raven");
+                var cannon = Weapon.CreateWeapon("Cannon", WeaponType.Large);
+
+                // Act
+                raven.InstallWeapon(cannon, 3);
+
+                // Assert
+                Assert.AreEqual(cannon, raven.WeaponSlots[3]);
             }
         }
 
