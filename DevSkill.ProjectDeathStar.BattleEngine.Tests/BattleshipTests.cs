@@ -30,6 +30,25 @@ namespace Tests
             }
         }
 
+        [Test]
+        public void CreateBattleship_GivenProperNameOfShip_CreatesCorrectShip()
+        {
+            using(var mock = AutoMock.GetLoose())
+            {
+                // Arrange
+
+                // Act
+                var raven = Battleship.CreateBattleship("Raven");
+
+                // Assert
+                Assert.Multiple(() =>
+                {
+                    Assert.AreEqual("Raven", raven.Name, "Name mismatch.");
+                    Assert.AreEqual(8, raven.WeaponSlots.Length, "Weapon slot mismatch");
+                });
+            }
+        }
+
         //[Test]
         //public void Test1()
         //{
