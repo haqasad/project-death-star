@@ -2,6 +2,7 @@ using Autofac.Extras.Moq;
 using NUnit.Framework;
 using System.Diagnostics.CodeAnalysis;
 using DevSkill.ProjectDeathStar.BattleEngine;
+using System;
 
 namespace Tests
 {
@@ -73,6 +74,26 @@ namespace Tests
 
                 // Assert
                 Assert.AreEqual(4000, result);
+            }
+        }
+
+        [Test]
+        public void InstallWeapon_SetWeaponInWrongSlot_ThrowsException()
+        {
+            using(var mock = AutoMock.GetLoose())
+            {
+                // Arrange
+                var raven = Battleship.CreateBattleship("Raven");
+                var cannon = Weapon.CreateWeapon("Cannon", WeaponType.Large);
+
+                // Act
+
+                // Assert
+                Assert.Multiple(() =>
+                {
+                    var ex = Assert.Throws<Exception>(() => raven.InstallWeapon(cannon, 7), "Expected exception is missing");
+                    Assert.AreEqual("Invalid Slot", ex.Message, "Wrong error message");
+                });
             }
         }
 
