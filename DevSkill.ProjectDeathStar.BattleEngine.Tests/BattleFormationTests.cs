@@ -18,14 +18,23 @@ namespace Tests
         {
             using (var mock = AutoMock.GetLoose())
             {
+                // Arrange
                 BattleFormation formation = new BattleFormation("formation 1");
+                var shipMock = mock.Mock<Ship>();
+                var ship = shipMock.Object;
+
+                // Act
+                formation.SetFormationRow(ship, 100, 2);
+
+                // Assert
+                Assert.AreSame(formation.Rows[2].SelectedShip, ship);
             }
         }
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+        //[Test]
+        //public void Test1()
+        //{
+        //    Assert.Pass();
+        //}
     }
 }
